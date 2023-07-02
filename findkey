@@ -1,0 +1,13 @@
+metadata:
+    language: v1-beta
+    name: "findkey"
+    description: "findkey"
+
+given response then
+    if {latest.response} matches "secret\w*\s*(\"|'|`)?[:=]\s*[\"'][0-9a-zA-Z_=]{20,}[\"']|[\"']akid|secret\w*\s*=[0-9a-zA-Z_=]{20,}" then
+        report issue:
+            severity: high
+            confidence: firm
+            detail: "findkey"
+            remediation: "Replace your keys and ensure keys are no longer revealed."
+    end if
