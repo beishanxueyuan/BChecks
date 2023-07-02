@@ -7,6 +7,8 @@ burp suite插件
 
 在此处添加，将代码复制上去即可
 
+【fastjson】 将每一个包都去探测fastjson漏洞
+
 【findkey】 寻找返回包中的apisecret，使用正则匹配
 
-【fastjson】 将每一个包都去探测fastjson漏洞
+
